@@ -1,12 +1,13 @@
+@font-face {
+  font-family: "Lexend ligh";
+  src: local("Lexend ligh"), url(../assets/Lexend-Light.ttf) format("ttf");
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  /* line-height: 1.5; */
-  font-weight: 400;
-
+  font-family: Lexend, system-ui, Avenir, Helvetica, Arial, sans-serif;
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
+  color: #213547;
+  background-color: #ffffff;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -15,55 +16,220 @@
 
 body {
   margin: 0;
-  /* display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh; */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* --------- Navigation Bar --------- */
+
+.nav-wrap {
+  display: flex;
+  justify-content: center;
 }
 
-/* Navigation Bar */
-/* --- */
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #72a1dd;
+#nav-container {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 30px;
+  justify-content: space-between;
+  border-radius: 50px;
+  margin: 10px;
+  border: 1px solid #72a1dd;
+  max-width: 1000px;
+  width: 100%;
+
+  /* LOGO */
+  .main-logo {
+    /* margin-right: auto; */
+    align-content: center;
+    padding: 0px 12px;
+
+    img.pokemon-logo {
+      width: 150px;
+      transform: scale(1);
+      animation: pulse 2s infinite;
+    }
+
+    img.pokemon-logo:hover {
+      cursor: pointer;
+    }
+  }
+
+  /* ----------- LINKS */
+  .nav-link-wrap {
+    display: flex;
+    align-items: center;
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    ul li:hover {
+      cursor: pointer;
+    }
+
+    ul li a.nav-link {
+      display: block;
+      color: #255693;
+      font-size: 18px;
+      text-align: center;
+      padding: 10px 25px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    ul li a.nav-link:hover {
+      cursor: pointer;
+      animation: pulse 2s infinite;
+    }
+  }
+
+  /* --------- BUTTON */
+  .login-account-btn {
+    background-color: #72a1dd;
+    color: #ffffff;
+    border: none;
+    padding: 12px 23px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    text-decoration: none;
+    margin-left: 20px;
+    text-align: center;
+
+    /* for shine & gradient effects to work */
+    position: relative;
+    overflow: hidden;
+    /* for background color shift */
+    background-image: (linear-gradient(270deg, #8e9ac2, #42579a));
+    background-size: 400% 400%;
+    animation: TransitioningBackground 10s ease infinite;
+    /* to ease the button growth on hover */
+    transition: 0.6s;
+
+    /* psuedo-element shine animation left side */
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      background: rgba(255, 255, 255, 0.5);
+      width: 60px;
+      height: 100%;
+      top: 0;
+      filter: blur(30px);
+      transform: translateX(-100px) skewX(-15deg);
+    }
+    /* psuedo-element shine animation right side */
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      background: rgba(255, 255, 255, 0.2);
+      width: 30px;
+      height: 100%;
+      top: 0;
+      filter: blur(5px);
+      transform: translateX(-100px) skewX(-15deg);
+    }
+    /* grow button and change background gradient on hover */
+    &:hover {
+      cursor: pointer;
+      /* psuedo-elements for right- and left-side shine animations */
+      &::before,
+      &::after {
+        transform: translateX(300px) skewX(-15deg);
+        transition: 0.7s;
+      }
+    }
+  }
+
+  .login-account-btn:hover {
+    cursor: pointer;
+  }
 }
 
-ul li {
-  float: right;
+.hamburger-menu {
+  display: none;
 }
 
-ul li a {
-  display: block;
-  color: white;
-  font-weight: bold;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+/* ------------ ANIMATIONS ------------ */
+@keyframes TransitioningBackground {
+  0% {
+    background-position: 1% 0%;
+  }
+  50% {
+    background-position: 99% 100%;
+  }
+  100% {
+    background-position: 1% 0%;
+  }
 }
 
-ul li a:hover {
-  background-color: #578bc4;
-  font-size: larger;
-}
-/* ------------ */
+@keyframes pulse {
+  0% {
+    transform: scale(1.1);
+    /* box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7); */
+  }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
+  30% {
+    transform: scale(0.9);
+    /* box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); */
+  }
+
+  100% {
+    transform: scale(1.1);
+    /* box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); */
+  }
+}
+
+/* ------------ MEDIA QUERIES ------------ */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (max-width: 992px) {
+  .nav-link-wrap {
+    display: none !important;
+    width: 98%;
     background-color: #ffffff;
+    position: absolute;
+    left: 0;
+    right: 0px;
+    top: 100px;
+    margin-inline: auto;
+    border-radius: 22px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px;
+
+    ul {
+      flex-flow: column;
+    }
+
+    .login-account-btn {
+      margin: 0 !important;
+    }
   }
-  a:hover {
-    color: #747bff;
+
+  .hamburger-menu {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-content: center;
+    margin-right: 20px;
+
+    .material-symbols-rounded {
+      font-size: 36px;
+    }
   }
-  button {
-    background-color: #f9f9f9;
+
+  .hamburger-menu:hover {
+    cursor: pointer;
+  }
+
+  .active {
+    display: block !important;
   }
 }
