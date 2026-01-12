@@ -1,9 +1,12 @@
 import "./css/App.css";
+import Menu from "./components/Navbar.tsx";
+import Home from "./components/home.tsx";
 
 function App() {
   return (
     <>
-      <h1>Hola</h1>
+      <Menu />
+      <Home />
     </>
   );
 }
