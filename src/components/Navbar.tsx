@@ -2,7 +2,7 @@ import logo from "../assets/International_Pokemon_logo.png";
 import { NavItems } from "./NavItems";
 import { useState } from "react";
 
-function Menu() {
+function Navbar() {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(!open);
@@ -40,4 +40,4 @@ function Menu() {
   );
 }
 
-export default Menu;
+export default Navbar;

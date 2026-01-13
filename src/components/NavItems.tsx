@@ -6,7 +6,7 @@ export const NavItems = [
     cName: "nav-link",
   },
   {
-    title: "Catalog",
+    title: "Pokedex/Catalog",
     url: "#",
     icon: "fa-sharp fa-solid fa-circle-info",
     cName: "nav-link",
