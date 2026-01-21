@@ -5,6 +5,7 @@ export const PokeCards = [
     type: ["Grass", "Poison"],
     image: "pending",
     price: 0,
+    availability: true,
   },
   {
     number: "0002",
@@ -12,6 +13,7 @@ export const PokeCards = [
     type: ["Grass", "Poison"],
     image: "pending",
     price: 0,
+    availability: true,
   },
   {
     number: "0003",
@@ -19,6 +21,7 @@ export const PokeCards = [
     type: ["Grass", "Poison"],
     image: "pending",
     price: 0,
+    availability: true,
   },
   {
     number: "0004",
@@ -26,6 +29,7 @@ export const PokeCards = [
     type: ["Fire"],
     image: "pending",
     price: 0,
+    availability: true,
   },
   {
     number: "0005",
@@ -33,6 +37,7 @@ export const PokeCards = [
     type: ["Fire"],
     image: "pending",
     price: 0,
+    availability: true,
   },
   {
     number: "0006",
@@ -40,6 +45,7 @@ export const PokeCards = [
     type: ["Fire", "Flying"],
     image: "pending",
     price: 0,
+    availability: true,
   },
   {
     number: "0007",
@@ -47,6 +53,7 @@ export const PokeCards = [
     type: ["Water"],
     image: "pending",
     price: 0,
+    availability: true,
   },
   {
     number: "0008",
@@ -54,6 +61,7 @@ export const PokeCards = [
     type: ["Water"],
     image: "pending",
     price: 0,
+    availability: true,
   },
   {
     number: "0009",
@@ -61,5 +69,6 @@ export const PokeCards = [
     type: ["Water"],
     image: "pending",
     price: 0,
+    availability: true,
   },
 ];

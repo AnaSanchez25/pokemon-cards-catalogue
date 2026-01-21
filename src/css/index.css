@@ -3,6 +3,11 @@
   src: local("Lexend ligh"), url(../assets/Lexend-Light.ttf) format("ttf");
 }
 
+/* #root {
+  display: flex;
+  flex-direction: column;
+} */
+
 :root {
   margin: 0 auto;
   font-family: Lexend, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -248,11 +253,11 @@ body {
   z-index: -2;
   width: 100%;
 }
-
+/* ------------ FOOTER------------ */
 .footer-container {
   background-color: #72a1dd;
   color: #ffffff;
-  position: absolute;
+  position: fixed;
   width: 100%;
   bottom: 0;
   display: flex;
@@ -268,8 +273,29 @@ body {
 
     img {
       width: 150px;
+      transform: scale(1);
+      animation: pulse 2s infinite;
     }
   }
+}
+
+/* ------------ CARD CATALOG ------------ */
+.catalog-container {
+  display: flex;
+  padding: 30px 50px;
+}
+.catalog-card {
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  border-radius: 8px;
+}
+
+.card-img {
+  border-radius: 8px 8px 0 0;
+  width: 350px;
+}
+
+.card-description {
+  padding: 0px 30px;
 }
 
 /* ------------ ANIMATIONS ------------ */
