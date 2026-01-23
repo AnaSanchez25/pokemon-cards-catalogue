@@ -1,5 +1,5 @@
 import logo from "./assets/International_Pokemon_logo.png";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Navbar from "./components/Navbar.tsx";
 import Home from "./components/home.tsx";
 import Catalog from "./components/Catalog.tsx";
@@ -15,8 +15,8 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/catalog" element={<Catalog />}></Route>
         </Routes>
+        <Footer />
       </BrowserRouter>
-      <Footer />
     </>
   );
 }
@@ -27,14 +27,16 @@ function Footer() {
       <div className="footer-links">
         <ul>
           <li>
-            <a href="">ABOUT</a>
-          </li>
-          <li>{/* <Link to="">CATALOG</Link> */}</li>
-          <li>
-            <a href="">HOME</a>
+            <Link to={"/"}>HOME</Link>
           </li>
           <li>
-            <a href="">CONTACT</a>
+            <Link to={"/catalog"}>CATALOG</Link>
+          </li>
+          <li>
+            <Link to={"/"}>ABOUT</Link>
+          </li>
+          <li>
+            <Link to={"/"}>CONTACT</Link>
           </li>
         </ul>
       </div>

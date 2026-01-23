@@ -1,4 +1,4 @@
-// import backgroundImage from "../assets/booster-art-1.jpg";
+import sadPokemon from "../assets/sad-pokemon.png";
 import { useEffect, useState } from "react";
 
 function Catalog() {
@@ -8,42 +8,103 @@ function Catalog() {
     height: number;
     weight: number;
     sprites: { front_default: string };
+    types: {
+      [key: number]: { type: { name: string } };
+    };
   }
 
-  // const [pokemon, setPokemon] = useState<Pokemon[]>([]);
-  const [pokemon, setPokemon] = useState<Array<DataType>>([]);
+  const [pokemon, setPokemon] = useState<DataType>();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [fav, setFav] = useState("fav-poke");
+
+  async function apiCall(id: number) {
+    await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((apiData) => {
+        setPokemon(apiData);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+        console.error("Error:", error);
+      });
+  }
+
+  function randomNum() {
+    const randomNum = Math.floor(Math.random() * 150);
+    return randomNum;
+  }
+
+  function refreshPage() {
+    window.location.reload();
+  }
+
+  function makeFav() {
+    if (fav !== "fav-poke-active") {
+      setFav("fav-poke-active");
+    } else {
+      setFav("fav-poke");
+    }
+  }
 
   useEffect(() => {
-    fetch("https://pokeapi.co/api/v2/pokemon/25")
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        }
-      })
-      .then((data) => setPokemon(data))
-      .catch((error) => console.error("Error:", error));
-    // console.log(data);
+    const pokemonId = randomNum();
+    apiCall(pokemonId);
   }, []);
+
   console.log(pokemon);
+
   return (
     <div className="catalog-container">
-      {pokemon.map((data) => (
-        <div className="catalog-card">
-          <img src={data.sprites.front_default} className="card-img" />
-          <div className="card-description">
-            <h3>{data.name}</h3>
-            <p>
-              ID: {data.id}
-              <br />
-              Height: {data.height}
-              <br />
-              Weight: {data.weight}
-              <br />
-              {/* Type: {pokemon.types[].type.name} */}
-            </p>
+      {loading && (
+        <div className="catalog-loading">
+          <p>Loading data...</p>
+        </div>
+      )}
+      {error && (
+        <div className="catalog-error">
+          <img src={sadPokemon} />
+          <p>Something went wrong</p>
+          <button className="reload-button" onClick={refreshPage}>
+            Reload
+          </button>
+        </div>
+      )}
+      {pokemon && (
+        <div className="catalog-cards-container">
+          <div className="catalog-card">
+            <div className="card-header">
+              <span
+                className={`material-symbols-rounded ${fav}`}
+                onClick={makeFav}
+              >
+                kid_star
+              </span>
+              <h3 className="all-caps">{pokemon.name}</h3>
+            </div>
+
+            <img src={pokemon.sprites.front_default} className="card-img" />
+            <div className="card-description">
+              <p>
+                <b>ID:</b> {pokemon?.id}
+                <br />
+                <b>Height:</b> {pokemon.height}
+                <br />
+                <b>Weight: </b> {pokemon.weight}
+                <br />
+                <b>Type:</b> {pokemon.types[0].type.name}
+              </p>
+            </div>
           </div>
         </div>
-      ))}
+      )}
     </div>
   );
 }
