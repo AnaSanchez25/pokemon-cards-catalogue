@@ -14,9 +14,7 @@ function Navbar() {
       <div className="nav-wrap">
         <div id="nav-container">
           <div className="main-logo">
-        <div>
             <img src={logo} alt="Pokemon logo" className="pokemon-logo" />
-        </div>
           </div>
           <div className={open ? "nav-link-wrap active" : "nav-link-wrap"}>
             <ul>
