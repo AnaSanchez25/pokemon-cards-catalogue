@@ -1,31 +1,31 @@
 export const NavItems = [
   {
     title: "Home",
-    url: "#",
+    url: "/",
     icon: "fa-solid fa-house-user",
     cName: "nav-link",
   },
   {
-    title: "Catalog",
-    url: "#",
+    title: "Pokedex/Catalog",
+    url: "/catalog",
     icon: "fa-sharp fa-solid fa-circle-info",
     cName: "nav-link",
   },
   {
     title: "Characters",
-    url: "#",
+    url: "/characters",
     icon: "fa-solid fa-briefcase",
     cName: "nav-link",
   },
   {
     title: "About",
-    url: "#",
+    url: "/about",
     icon: "fa-solid fa-address-book",
     cName: "nav-link",
   },
   {
     title: "LOGIN",
-    url: "#",
+    url: "/account",
     cName: "login-account-btn",
   },
 ];

@@ -1,13 +1,49 @@
-import "./css/App.css";
-import Menu from "./components/Navbar.tsx";
+import logo from "./assets/International_Pokemon_logo.png";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Navbar from "./components/Navbar.tsx";
 import Home from "./components/home.tsx";
+import Catalog from "./components/Catalog.tsx";
+
+// import React, { useState } from "react";
 
 function App() {
   return (
     <>
-      <Menu />
-      <Home />
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/catalog" element={<Catalog />}></Route>
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </>
+  );
+}
+
+function Footer() {
+  return (
+    <div className="footer-container">
+      <div className="footer-links">
+        <ul>
+          <li>
+            <Link to={"/"}>HOME</Link>
+          </li>
+          <li>
+            <Link to={"/catalog"}>CATALOG</Link>
+          </li>
+          <li>
+            <Link to={"/"}>ABOUT</Link>
+          </li>
+          <li>
+            <Link to={"/"}>CONTACT</Link>
+          </li>
+        </ul>
+      </div>
+      <div className="footer-logo">
+        <img src={logo}></img>
+      </div>
+    </div>
   );
 }
 

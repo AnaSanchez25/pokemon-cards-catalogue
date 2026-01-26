@@ -1,8 +1,9 @@
 import logo from "../assets/International_Pokemon_logo.png";
 import { NavItems } from "./NavItems";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-function Menu() {
+function Navbar() {
   const [open, setOpen] = useState(false);
   const handleClick = () => {
     setOpen(!open);
@@ -20,10 +21,10 @@ function Menu() {
               {NavItems.map((Item, index) => {
                 return (
                   <li key={index}>
-                    <a href={Item.url} className={Item.cName}>
+                    <Link to={Item.url} className={Item.cName}>
                       <i className={Item.icon}></i>
                       {Item.title}
-                    </a>
+                    </Link>
                   </li>
                 );
               })}
@@ -40,4 +41,4 @@ function Menu() {
   );
 }
 
-export default Menu;
+export default Navbar;
