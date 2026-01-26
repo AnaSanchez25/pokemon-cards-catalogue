@@ -1,45 +1,13 @@
 import sadPokemon from "../assets/sad-pokemon.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useGetPokemon } from "./useGetPokemon";
 
 function Catalog() {
-  interface DataType {
-    name: string;
-    id: number;
-    height: number;
-    weight: number;
-    sprites: { front_default: string };
-    types: {
-      [key: number]: { type: { name: string } };
-    };
-  }
-
-  const [pokemon, setPokemon] = useState<DataType>();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [fav, setFav] = useState("fav-poke");
-
-  async function apiCall(id: number) {
-    await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then((apiData) => {
-        setPokemon(apiData);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setLoading(false);
-        console.error("Error:", error);
-      });
-  }
+  const { pokemon, error, loading } = useGetPokemon({ id: randomNum() });
 
   function randomNum() {
-    const randomNum = Math.floor(Math.random() * 150);
-    return randomNum;
+    return Math.floor(Math.random() * 150);
   }
 
   function refreshPage() {
@@ -53,13 +21,6 @@ function Catalog() {
       setFav("fav-poke");
     }
   }
-
-  useEffect(() => {
-    const pokemonId = randomNum();
-    apiCall(pokemonId);
-  }, []);
-
-  console.log(pokemon);
 
   return (
     <div className="catalog-container">
