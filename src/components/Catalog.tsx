@@ -1,17 +1,14 @@
 import sadPokemon from "../assets/sad-pokemon.png";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useGetPokemon } from "./useGetPokemon";
 
 function Catalog() {
-
   const [fav, setFav] = useState("fav-poke");
-const {pokemon, error, loading} = useGetPokemon({id: randomNum()})
-
+  const { pokemon, error, loading } = useGetPokemon({ id: randomNum() });
 
   function randomNum() {
     return Math.floor(Math.random() * 150);
   }
-
 
   function refreshPage() {
     window.location.reload();
@@ -24,7 +21,6 @@ const {pokemon, error, loading} = useGetPokemon({id: randomNum()})
       setFav("fav-poke");
     }
   }
-
 
   return (
     <div className="catalog-container">
